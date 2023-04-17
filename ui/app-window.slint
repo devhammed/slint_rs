@@ -1,0 +1,30 @@
+import { LineEdit, Button , VerticalBox } from "std-widgets.slint";
+
+export component AppWindow inherits Window {
+  title: "Baddest App";
+  preferred-width: 400px;
+  preferred-height: 400px;
+  property <string> name;
+
+  VerticalBox {
+    spacing: 0;
+    alignment: center;
+
+    Text {
+      font-size: 20px;
+      text: name != "" ? "Hello, \{name}"  : "Hello World";
+    }
+
+    Rectangle {
+      height: 10px;
+    }
+
+    LineEdit {
+      height: 40px;
+      placeholder-text: "Enter your name...";
+      edited => {
+        name = self.text;
+      }
+    }
+  }
+}
